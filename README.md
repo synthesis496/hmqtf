@@ -1,9 +1,16 @@
 #Hyper-Mirror Quantum Theory Field(HMQTF)
 
-#Measurement-Free Dissipative Qudit Error Correction Platform
-
 #Inventor: Chutiphong Bunloed, Buriram, Thailand
+
+Orcid : 0009-0003-4295-7521
+
+DOI 10.5281 /Zenodo.23170764
+
+#Email:synthesis496@gmail.com
+
 #Copyright (c) 2026. All Rights Reserved.
+
+#Measurement-Free Dissipative Qudit Error Correction Platform
 
 ###  Performance Benchmarks & Numerical Profile
 #### Scaling Profile & Computational Complexity
