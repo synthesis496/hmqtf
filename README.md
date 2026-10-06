@@ -8,7 +8,8 @@ DOI 10.5281 /Zenodo.23170764
 
 #Email:synthesis496@gmail.com
 
-#Copyright (c) 2026. All Rights Reserved.
+#Copyright(c)2026.Chutiphong Bunloed
+All Rights Reserved.
 
 #Measurement-Free Dissipative Qudit Error Correction Platform
 
