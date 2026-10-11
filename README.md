@@ -4,7 +4,7 @@
 
 Orcid : 0009-0003-4295-7521
 
-DOI 10.5281 /Zenodo.23170764
+DOI 10.5281 /Zenodo.23291576
 
 #Email:synthesis496@gmail.com
 
