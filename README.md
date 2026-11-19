@@ -1,7 +1,5 @@
 # Hyper-Mirror Quantum Theory Field (HMQTF)
 
-[![DOI](https://zenodo.org)](https://doi.org)
-
 **Inventor:** Chutiphong Bunloed (Buriram, Thailand)  
 **ORCID:** [0009-0003-4295-7521](https://orcid.org)  
 **Email:** synthesis496@gmail.com  
@@ -47,4 +45,3 @@ Licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
 
 
-Chutiphong. (2026). synthesis496/hmqtf: update full (Version v2.2.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24369802
