@@ -1,3 +1,6 @@
+#CopyRight (c)2026 Chutiphong Bunloed
+#All Rights Reserved.
+
 import numpy as np
 import hmqtf_product
 
