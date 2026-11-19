@@ -1,34 +1,50 @@
-#Hyper-Mirror Quantum Theory Field(HMQTF)
+# Hyper-Mirror Quantum Theory Field (HMQTF)
 
-#Inventor: Chutiphong Bunloed, Buriram, Thailand
+[![DOI](https://zenodo.org)](https://doi.org)
 
-Orcid : 0009-0003-4295-7521
+**Inventor:** Chutiphong Bunloed (Buriram, Thailand)  
+**ORCID:** [0009-0003-4295-7521](https://orcid.org)  
+**Email:** synthesis496@gmail.com  
+
+---
+
+## Overview
+
+**HMQTF** is a measurement-free, passive autonomous qudit error correction framework based on open quantum systems (Lindblad master equation), non-uniform Fibonacci time modulation, anti-cascade mirror-folding symmetry, and dissipative limit cycles.
+
+## Repository Structure
+
+- **`hmqtf_product.py`** — Core `HMQTF` engine implementing sparse/batch Lindblad evolution, Fibonacci clock modulation, mirror-parity operators, limit-cycle dynamics, and spectral diagnostics.
+- **`hmqtf_demo.py`** — Quick-start demonstrations covering single/batch evolution, infinite extensions, limit cycles, and golden-ratio convergence.
+- **`hmqtf_test.py`** — 30-function unit test suite verifying algebraic invariants, trace preservation, hermiticity, and spectral bounds.
+- **`hmqtf_benchmark.py`** — High-precision execution timing and dimensional scaling benchmarks (\(d = 8\) to \(128\)).
+
+## Requirements & Quick Start
+
+```bash
+pip install numpy scipy
+```
+
+Run the demo, unit tests, or benchmarks directly:
+
+```python
+import hmqtf_demo
+import hmqtf_test
+import hmqtf_benchmark
+
+print(hmqtf_test.run_all())       # Run all 30 verification tests
+print(hmqtf_demo.run_all())       # Run functional demonstrations
+print(hmqtf_benchmark.run())      # Run dimensional scaling benchmarks
+```
+
+## Citation
+
+Chutiphong. (2026). synthesis496/hmqtf: update full (Version v2.2.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24369802
+
+## License
+
+Licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
 
-#Email:synthesis496@gmail.com
-
-#Copyright(c)2026.Chutiphong Bunloed
-All Rights Reserved.
-
-#Repository Status: Telemetric Verification Log
-This public repository functions exclusively as a **Static Verification Profile & Telemetric Showcase** for the proprietary HMQTF architecture. 
-
-To comply with intellectual property protections and non-disclosure regulations, the active mathematical functional representations, differential equations, and tensor expansion runtimes are **strictly omitted** from the open-source layer. 
-
-### Verified Functional Properties (Asymptotic High-Dimensional Profile)
-The execution of the underlying algebra yields the following verified numerical invariants (accessible via `Demo_hmqtf.py` for environment consistency check):
-* **Symmetry Preservation:** Commutator norm evaluates strictly to `0.0`, proving algebraic stability.
-* **Passive Dissipation:** Bounded limit cycle convergence is achieved (`True`) with a verified spectral gap of `0.1836`.
-* **Asymptotic Convergence:** Fibonacci-gated ratio scaling conforms to golden ratio errors within strict numerical thresholds.
-
-###  Performance Benchmarks & Numerical Profile
-#### Scaling Profile & Computational Complexity
-![Performance Scaling Graph](benchmark_graph.png)
-
-#### High-Precision Timing Profiles
-![Timing Metrics Table](Timing_table.png)
-
-## Verification & Unit Test Suite
-![Unit Test Verification Logs](Unit_test.png)
 
 Chutiphong. (2026). synthesis496/hmqtf: update full (Version v2.2.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24369802
