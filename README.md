@@ -104,7 +104,6 @@ The function names and diagnostics should be read according to their implemented
 - A finite `trace_preservation_error`, `hermiticity_error`, or eigenvalue result is a numerical check, not a proof of physical fault tolerance.
 - `mirror()`, `fold()`, `conserve()`, `stabilizer()`, and `anti_cascade_metric()` implement specific algebraic operations in this package; their presence does not independently establish a physical correction theorem.
 - The implementation constructs a Lindblad-type jump operator using `sqrt(gamma)` and also multiplies the dissipative term by `gamma` in its evolution methods. Users should verify the intended convention before assigning a physical interpretation to gamma.
-- The repository does not include a dependency manifest or packaging metadata; NumPy and SciPy must be installed manually.
 - Benchmark results are hardware- and environment-dependent. This README does not present unmeasured benchmark numbers as established performance guarantees.
 
 ## Citation
