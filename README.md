@@ -4,7 +4,6 @@
 
 Orcid : 0009-0003-4295-7521
 
-DOI 10.5281 /Zenodo.23291576
 
 #Email:synthesis496@gmail.com
 
@@ -32,13 +31,4 @@ The execution of the underlying algebra yields the following verified numerical 
 ## Verification & Unit Test Suite
 ![Unit Test Verification Logs](Unit_test.png)
 
-#Intellectual Property & Licensing Notice
-This repository serves as a Telemetric Output & Verification Showcase for the proprietary HMQTF Architecture. 
-To protect commercial intellectual property and trade secrets, the core compilation runtime, numerical differential solvers and active high-dimensional tensor expansion algorithms are omitted from this public repository and are fully packaged for commercial acquisition.
 
-##Commercial Licensing & IP Acquisition
-The complete production-grade source code, along with the comprehensive mathematical blueprint specifications (including the complete continuous limit formulations), is available for institutional purchase, commercial integration, or total IP ownership transfer.
-
-For official commercial evaluation, pricing models, and private repository access under non-disclosure agreements (NDA), please contact the inventor directly:
-#InventorContact
-#Email:synthesis496@gmail.com
