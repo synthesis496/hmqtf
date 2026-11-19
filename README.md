@@ -31,4 +31,4 @@ The execution of the underlying algebra yields the following verified numerical 
 ## Verification & Unit Test Suite
 ![Unit Test Verification Logs](Unit_test.png)
 
-
+Chutiphong. (2026). synthesis496/hmqtf: update full (Version v2.2.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24369802
