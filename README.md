@@ -1,48 +1,48 @@
 # HMQTF
 
-ชุดโค้ด Python สำหรับทดลองเชิงตัวเลขเกี่ยวกับพลวัตของระบบควอนตัมมิติจำกัด โดยมีคลาสหลัก `HMQTF` สำหรับสร้างสถานะและเมทริกซ์ความหนาแน่น จำลองวิวัฒนาการแบบ Lindblad คำนวณค่าตรวจวัดเชิงวินิจฉัย และทดลองฟังก์ชันที่เกี่ยวกับลำดับ Fibonacci และ limit cycle
+A Python numerical simulation package for studying finite-dimensional quantum-system dynamics. The repository's main `HMQTF` class creates basis states and density matrices, implements Lindblad-style evolution, computes diagnostic observables, and includes utilities related to Fibonacci sequences and limit-cycle dynamics.
 
-> **ขอบเขต:** README นี้อธิบายสิ่งที่โค้ดใน repository ทำอยู่ ไม่ได้ยืนยันว่าการจำลองเป็นกลไก quantum error correction ที่ผ่านการพิสูจน์หรือผ่านการตรวจสอบทางฟิสิกส์แล้ว
+> **Scope:** This README describes what the current code implements. It does not claim that the simulation has been scientifically, experimentally, or physically validated as a quantum-error-correction mechanism.
 
-**ผู้พัฒนา:** Chutiphong Bunloed (Buriram, Thailand)  
+**Inventor:** Chutiphong Bunloed (Buriram, Thailand)  
 **ORCID:** [0009-0003-4295-7521](https://orcid.org/0009-0003-4295-7521)  
 **Email:** synthesis496@gmail.com
 
-## โครงสร้าง repository
+## Repository Structure
 
-- `hmqtf_product.py` — คลาส `HMQTF` และฟังก์ชันหลักของแบบจำลอง
-- `hmqtf_demo.py` — ตัวอย่างการเรียกใช้: วิวัฒนาการสถานะ, batch, infinite extension, limit cycle และ Fibonacci
-- `hmqtf_test.py` — ชุดฟังก์ชันทดสอบ โดย `run_all()` คืนค่า Boolean ของแต่ละกรณี
-- `hmqtf_benchmark.py` — ฟังก์ชัน benchmark สำหรับการดำเนินการและการจำลองหลายรูปแบบ
+- `hmqtf_product.py` — the core `HMQTF` class and numerical implementation
+- `hmqtf_demo.py` — demonstrations for state evolution, batching, infinite extensions, limit cycles, and Fibonacci calculations
+- `hmqtf_test.py` — Boolean verification functions; `run_all()` runs the available checks
+- `hmqtf_benchmark.py` — benchmark functions for operations, evolution, diagnostics, persistence, and dimension scaling
 
-## ความสามารถในโค้ด
+## Implemented Features
 
-คลาส `HMQTF` รับพารามิเตอร์ `d`, `gamma`, `hbar`, `tau_0`, `C`, `beta` และ `a` โดยมีค่าเริ่มต้นตาม constructor ใน `hmqtf_product.py` โค้ดประกอบด้วย:
+The `HMQTF` constructor accepts `d`, `gamma`, `hbar`, `tau_0`, `C`, `beta`, and `a`.
 
-- สร้าง computational basis state ด้วย `fermison()` และ `fermison_batch()` และแปลงเป็น density matrix
-- คำนวณ mirror, fold, conservation scalar และ anti-cascade metric รวมถึง mirror/parity action บน state
-- สร้าง Fibonacci sequence, Fibonacci clock และค่าความคลาดเคลื่อนของอัตราส่วน Fibonacci ต่อ golden ratio
-- จำลอง evolution ด้วย `evolve_fast()` (Euler แบบขั้นเวลา), `evolve_accurate()` (SciPy `solve_ivp`/RK45), และ `evolve_batch()`; `evolve_multi_gamma()` จำลองหลายค่า gamma
-- คำนวณ purity, entropy, fermion number, stabilizer, trace distance, expected/effective energy และ spectral diagnostics
-- บันทึก/โหลด configuration ด้วย `save()`/`load()` และสร้าง instance ใหม่ด้วย `clone()`
+The implementation provides:
 
-`hmqtf_demo.py` แสดงตัวอย่างการใช้งานเหล่านี้ แต่การมีฟังก์ชันในโค้ดไม่ได้หมายความว่าผลลัพธ์ได้รับการยืนยันเชิงทฤษฎีหรือเชิงทดลองแล้ว
+- Basis-like states through `fermison()` and batched states through `fermison_batch()`
+- Pure density-matrix conversion through `state_to_density()` and `state_batch_to_density()`
+- Mirror, fold, conservation, anti-cascade, mirror-state, and parity-state operations
+- Fibonacci sequence generation, Fibonacci-clock Gaussian peaks, Fibonacci ratios, and convergence estimates for the golden ratio
+- Finite-step Euler evolution in `evolve_fast()`
+- RK45 trajectory integration through SciPy `solve_ivp()` in `evolve_accurate()`
+- Batched evolution in `evolve_batch()` and multi-gamma evolution in `evolve_multi_gamma()`
+- Purity, entropy, fermion number, stabilizer, trace distance, expected/effective energy, spectral, and commutator diagnostics
+- Configuration serialization through `save()` and `load()`
+- Independent parameter overrides through `clone()` and in-place updates through `reconfigure()`
 
-## ติดตั้งและเริ่มต้นใช้งาน
+## Installation
 
-ต้องใช้ Python และ dependencies ต่อไปนี้:
+Python with NumPy and SciPy is required:
 
 ```bash
 python -m pip install numpy scipy
 ```
 
-หลัง clone repository แล้ว ให้รันคำสั่งจากไดเรกทอรีของ repository:
+Run the commands below from the repository root.
 
-```bash
-python -c "import hmqtf_demo; print(hmqtf_demo.demo())"
-```
-
-ตัวอย่างใช้งานคลาสโดยตรง:
+## Basic Example
 
 ```python
 import hmqtf_product
@@ -52,23 +52,60 @@ state = model.fermison(0)
 result = model.run(state, n_steps=2000, dt=0.0005)
 
 print("purity:", result["purity"])
+print("fermion number:", result["fermion_number"])
 print("trace error:", result["trace_error"])
 ```
 
-เรียกชุดทดสอบที่มีใน repository ได้ด้วย:
+Run the included demonstrations:
 
 ```bash
-python -c "import hmqtf_test; results = hmqtf_test.run_all(); print(results); print(f'{sum(results)}/{len(results)} passed')"
+python -c "import hmqtf_demo; print(hmqtf_demo.run_all())"
 ```
 
-`run_all()` คืน list ของผล Boolean; คำสั่งด้านบนจึงแสดงผลรายกรณีและจำนวนกรณีที่ผ่าน ไม่ใช่การเรียกใช้ pytest
+Run the verification functions:
 
-## หมายเหตุเกี่ยวกับการตีความผล
+```bash
+python -c "import hmqtf_test; r=hmqtf_test.run_all(); print(r); print(f'{sum(r)}/{len(r)} passed')"
+```
 
-- `evolve_fast()` ใช้ Euler time stepping และปรับ trace ให้เป็น 1 ในแต่ละ step ส่วน `evolve_accurate()` ใช้ RK45 และคืน trajectory ตาม `n_points` ที่กำหนด
-- ใน implementation ปัจจุบัน ตัว dissipator สร้าง jump operator จาก `sqrt(gamma)` และยังคูณ dissipator ด้วย `gamma` ในสมการ evolution ด้วย ดังนั้นผลจาก gamma ขึ้นกับการประกอบสองส่วนนี้ ควรตรวจสอบสมการและ convention ของพารามิเตอร์ก่อนนำผลไปตีความทางกายภาพ
-- `HMQTF` เป็นชื่อคลาส/แบบจำลองในโค้ด; ฟังก์ชันที่มีชื่อเกี่ยวกับ correction, conservation หรือ stabilizer ไม่ได้ด้วยตัวเองพิสูจน์คุณสมบัติการแก้ข้อผิดพลาดหรือการอนุรักษ์ตามความหมายทางฟิสิกส์
-- `hmqtf_benchmark.py` มี benchmark functions แต่ README นี้ไม่กล่าวอ้างผลด้านประสิทธิภาพหรือ scaling ที่ผ่านการวัดและยืนยันแล้ว
+`run_all()` in `hmqtf_test.py` returns a list of Boolean values. These are direct Python assertions/functions, not a pytest test suite.
+
+Run the benchmark entry point:
+
+```bash
+python -c "import hmqtf_benchmark; print(hmqtf_benchmark.run())"
+```
+
+## Constructor Parameters
+
+| Parameter | Default | Purpose |
+|---|---:|---|
+| `d` | `64` | Hilbert-system dimension |
+| `gamma` | `0.1` | Dissipation strength |
+| `hbar` | `1.0` | Effective Planck constant used in the evolution equation |
+| `tau_0` | `1.0` | Scale applied to Fibonacci-clock times |
+| `C` | `0.0` | Offset used in mirror/fold operations |
+| `beta` | `1.0` | Imaginary coefficient in the limit-cycle update |
+| `a` | `-0.1` | Real coefficient in the limit-cycle update |
+
+## Numerical Methods
+
+- `evolve_fast()` applies an explicit Euler update and renormalizes the trace after every step.
+- `evolve_accurate()` flattens the density matrix and integrates the Lindblad right-hand side with `solve_ivp(method='RK45')`.
+- `evolve_batch()` computes batch density matrices and evolution with NumPy array operations.
+- `evolve_multi_gamma()` runs independent evolutions for a supplied sequence of gamma values.
+- `entropy()` removes eigenvalues smaller than `1e-12` before computing the von Neumann entropy.
+- `save()` stores only the constructor configuration, not the full runtime state.
+
+## Interpretation Notes
+
+The function names and diagnostics should be read according to their implemented calculations:
+
+- A finite `trace_preservation_error`, `hermiticity_error`, or eigenvalue result is a numerical check, not a proof of physical fault tolerance.
+- `mirror()`, `fold()`, `conserve()`, `stabilizer()`, and `anti_cascade_metric()` implement specific algebraic operations in this package; their presence does not independently establish a physical correction theorem.
+- The implementation constructs a Lindblad-type jump operator using `sqrt(gamma)` and also multiplies the dissipative term by `gamma` in its evolution methods. Users should verify the intended convention before assigning a physical interpretation to gamma.
+- The repository does not include a dependency manifest or packaging metadata; NumPy and SciPy must be installed manually.
+- Benchmark results are hardware- and environment-dependent. This README does not present unmeasured benchmark numbers as established performance guarantees.
 
 ## Citation
 
@@ -76,4 +113,4 @@ Chutiphong. (2026). synthesis496/hmqtf: update full (Version v2.2.1) [Computer s
 
 ## License
 
-GNU Affero General Public License v3.0 (AGPL-3.0) — ดูรายละเอียดในไฟล์ `LICENSE`.
+GNU Affero General Public License v3.0 (AGPL-3.0). See `LICENSE` for the complete terms.
